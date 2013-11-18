@@ -46,7 +46,7 @@ It provides a load function `data.load` and a list of datasets `data.sets`.
 
 `data.load` takes a dataset name (and optional arguments dependent on the dataset). For example, `data.load("mnist")`. If the dataset isn't supported, you can give a URL instead -- eg. `data.load("https://s3.amazonaws.com/PyData-colah/cifar100.tgz")`.
 
-The result you get is a nested dictionary structure with numpy arrays at the bottom. For example:
+The result you get is a nice and easy to use python object. In the case of MNIST, it is anested dictionary structure with numpy arrays at the bottom:
 
 ```python
 >>> D = data.load("mnist")
@@ -61,7 +61,7 @@ The result you get is a nested dictionary structure with numpy arrays at the bot
 Adding Datasets Is Simple
 -------------------------
 
-Every dataset is just a tarball with numpy files and a json manifest. [Learn More](format.md)
+Every dataset is just a tarball with a `handle.py` file which describes how to work with the data. (See the [template handle.py](template/handle.py).) For many common uses, there are helpers which already know how to work with the data. (See [existing helpers](helpers/).)
 
 To add a dataset, throw it somewhere fast, reliable and cheap (we use Amazon S3) and submit the URL and a hash to us in a pull request editing `datasets.py`.
 
