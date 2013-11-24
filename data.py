@@ -103,7 +103,7 @@ def install_dataset(base_path, name, url):
     else:
         shutil.move(work_path, install_path)
     helper_path = os.path.join(os.path.split(__file__)[0], "helpers/")
-    os.symlink(helper_path, os.path.join(install_path, "helpers/"))
+    os.symlink(helper_path, os.path.join(install_path, "helpers"))
 
     #Clean up...
     os.remove(download_path)
@@ -131,7 +131,7 @@ def load(name):
         path = installed_datasets[compname]
     handle = get_dataset_handle(compname, path)
     data = handle.load()
-    print data
+    return data
         
             
 
